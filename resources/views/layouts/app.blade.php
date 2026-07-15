@@ -194,8 +194,8 @@
                 </div>
                 <div class="col-md-4">
                     <h6 class="text-white mb-3">ارتباط با ما</h6>
-                    <p><i class="bi bi-envelope me-2"></i>info@phpcommerce.ir</p>
-                    <p><i class="bi bi-telephone me-2"></i>021-12345678</p>
+                    <p><i class="bi bi-envelope me-2"></i>{{ config('app.store_email') }}</p>
+                    <p><i class="bi bi-telephone me-2"></i>{{ config('app.store_phone') }}</p>
                 </div>
             </div>
             <hr class="border-secondary mt-4">

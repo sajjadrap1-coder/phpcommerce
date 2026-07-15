@@ -123,4 +123,12 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Store Contact Information
+    |--------------------------------------------------------------------------
+    */
+    'store_email' => env('STORE_EMAIL', 'info@phpcommerce.ir'),
+    'store_phone' => env('STORE_PHONE', '021-12345678'),
+
 ];

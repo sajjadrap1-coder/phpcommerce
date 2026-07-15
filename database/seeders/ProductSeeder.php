@@ -33,7 +33,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'category_slug' => 'electronics',
-                'name'          => 'پاوربانک ۲۰۰۰۰mAh',
+                'name'          => 'پاوربانک ۲۰ هزار میلی‌آمپر',
                 'description'   => 'پاوربانک با ظرفیت بالا و شارژ سریع',
                 'price'         => 450000,
                 'sale_price'    => 380000,
