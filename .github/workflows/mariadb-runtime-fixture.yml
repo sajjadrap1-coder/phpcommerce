@@ -1,7 +1,5 @@
 name: Disposable MariaDB runtime fixture
 on:
-  push:
-    branches: ['codex/php-runtime-fixture-20261022']
   workflow_dispatch:
 permissions:
   contents: read

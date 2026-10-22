@@ -1,9 +1,5 @@
 name: Disposable PHP runtime fixture
 on:
-  push:
-    branches: ['codex/php-runtime-fixture-20261022']
-  pull_request:
-    branches: ['main']
   workflow_dispatch:
 permissions:
   contents: read
