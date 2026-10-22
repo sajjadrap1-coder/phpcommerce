@@ -1,0 +1,27 @@
+name: Public WordPress integration fixtures
+on:
+  push:
+    branches: ['codex/php-runtime-fixture-20261022']
+    paths: ['.github/workflows/wordpress-fixture.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fixture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Download public WordPress and plugin packages only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir fixture-packages
+          curl --fail --location --proto '=https' --max-time 120 https://wordpress.org/latest.zip -o fixture-packages/wordpress.zip
+          curl --fail --location --proto '=https' --max-time 120 https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip -o fixture-packages/woocommerce.zip
+          curl --fail --location --proto '=https' --max-time 120 https://downloads.wordpress.org/plugin/seo-by-rank-math.latest-stable.zip -o fixture-packages/rank-math.zip
+          (cd fixture-packages && sha256sum *.zip > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: public-wordpress-fixtures
+          path: fixture-packages/
+          retention-days: 1
