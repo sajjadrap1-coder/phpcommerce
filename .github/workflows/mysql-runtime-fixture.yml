@@ -17,10 +17,10 @@ jobs:
           set -euo pipefail
           command -v mysqld
           mysqld --version
-          mkdir -p fixture-mysql/bin fixture-mysql/lib fixture-mysql/data
+          mkdir -p fixture-mysql/bin fixture-mysql/lib
           cp "$(readlink -f "$(command -v mysqld)")" fixture-mysql/bin/
           cp "$(readlink -f "$(command -v mysql)")" fixture-mysql/bin/
-          mysqld --no-defaults --initialize-insecure --user="$(id -un)" --datadir="$PWD/fixture-mysql/data" --log-error="$PWD/fixture-mysql/init.log"
+          mysqld --no-defaults --initialize-insecure --user="$(id -un)" --datadir="$PWD/fixture-mysql/data" --log-error="$PWD/fixture-mysql/init.log" || { cat fixture-mysql/init.log; exit 1; }
           for target in fixture-mysql/bin/*; do
             ldd "$target" | awk '{for(i=1;i<=NF;i++) if ($i ~ /^\//) print $i}'
           done | sort -u > /tmp/mysql-libraries.txt
